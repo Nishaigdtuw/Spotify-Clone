@@ -64,7 +64,7 @@ masterPlay.addEventListener("click",()=>{
 audioElement.addEventListener("timeupdate",()=>{
     //currentTime → kitna song chal chuka
     //duration → total song length
-    letprogress=parseInt((audioElement.currentTime/audioElement.duration)*100); //in percent 
+    let progress=parseInt((audioElement.currentTime/audioElement.duration)*100); //in percent 
     myProgressBar.value=progress;
     //Song chalne ke sath slider bhi move karta hai
 
