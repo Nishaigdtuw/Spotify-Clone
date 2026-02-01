@@ -87,22 +87,26 @@ const makeAllPlays=()=>{
 Array.from(document.getElementsByClassName("songItemPlay")).forEach((element)=>
     element.addEventListener("click",(e)=>{
         makeAllPlays();
-        songIndex=parseInt(e.target.id);
-        //e.target kya hai?
-        // jis song ke play icon pe click hua, wahi element
-       
+
+        audioElement.pause();          // 🔥 ADD
+        audioElement.currentTime = 0;  // 🔥 ADD
+
+        songIndex = parseInt(e.target.id);
+
         e.target.classList.remove("fa-circle-play");
         e.target.classList.add("fa-circle-pause");
-        audioElement.src=`songs/${songIndex}.mp3`;
-        masterSongName.innerHTML=songs[songIndex-1].songName;
-        audioElement.currentTime=0;
+
+        audioElement.src = `songs/${songIndex}.mp3`;
+        masterSongName.innerHTML = songs[songIndex-1].songName;
+
         audioElement.play();
-        gif.style.opacity=1;
-        // masterPlay bottom wala main play/pause button hai
+        gif.style.opacity = 1;
+
         masterPlay.classList.remove("fa-circle-play");
         masterPlay.classList.add("fa-circle-pause");
     })
-)
+);
+
 
 document.getElementById("next").addEventListener("click",()=>{
     if (songIndex>=10){
